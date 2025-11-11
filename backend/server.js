@@ -21,9 +21,13 @@ const studyGroupRoutes = require('./routes/studyGroups');
 const assignmentRoutes = require('./routes/assignments');
 const studentProfilesRoutes = require('./routes/studentprofiles');
 
+const corsOptions = {
+  origin: process.env.ALLOWED_ORIGIN || 'https://campus-connect-frontend-w96h.onrender.com',
+  credentials: true,
+};
 
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // API routes
