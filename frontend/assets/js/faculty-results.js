@@ -21,7 +21,7 @@ document.getElementById('resultUploadForm').addEventListener('submit', async (e)
   formData.append('file', document.getElementById('file').files[0]);
 
   try {
-    const res = await fetch('http://localhost:3000/api/results/upload', {
+    const res = await fetch(API_BASE+'/api/results/upload', {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${getToken()}` },
       body: formData
@@ -49,7 +49,7 @@ document.getElementById('resultUploadForm').addEventListener('submit', async (e)
 
 async function loadPreviousUploads() {
   try {
-    const res = await fetch('http://localhost:3000/api/results/all', {
+    const res = await fetch(API_BASE+'/api/results/all', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 

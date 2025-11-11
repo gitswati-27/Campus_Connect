@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3000");
+const socket = io(API_BASE);
 const params = new URLSearchParams(window.location.search);
 const groupId = params.get("id");
 const chatBox = document.getElementById("chatBox");
@@ -35,7 +35,7 @@ document.getElementById("uploadBtn").addEventListener("click", () => {
 
 // Exit group
 document.getElementById("exitBtn").addEventListener("click", async () => {
-  await fetch(`http://localhost:3000/api/study-groups/${groupId}/leave`, {
+  await fetch(API_BASE+`/api/study-groups/${groupId}/leave`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
   });

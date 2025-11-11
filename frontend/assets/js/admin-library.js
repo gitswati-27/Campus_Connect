@@ -4,7 +4,7 @@ function getToken() {
 
 async function loadBooks() {
   try {
-    const res = await fetch("http://localhost:3000/api/library/books", {
+    const res = await fetch(API_BASE+"/api/library/books", {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 
@@ -40,7 +40,7 @@ document.getElementById("addBookForm").addEventListener("submit", async (e) => {
   const isbn = document.getElementById("isbn").value;
 
   try {
-    const res = await fetch("http://localhost:3000/api/library/add", {
+    const res = await fetch(API_BASE+"/api/library/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

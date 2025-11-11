@@ -15,7 +15,7 @@ if (!user || user.role !== 'student') {
 
 async function loadResults() {
   try {
-    const res = await fetch('http://localhost:3000/api/results/my', {
+    const res = await fetch(API_BASE+'/api/results/my', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 

@@ -15,7 +15,7 @@ if (user?.role === 'faculty') {
 // Fetch and render notices
 async function getNotices() {
   try {
-    const res = await fetch('http://localhost:3000/api/notices', {
+    const res = await fetch(API_BASE+'/api/notices', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
     const notices = await res.json();
@@ -100,7 +100,7 @@ document.getElementById('noticeForm').addEventListener('submit', async (e) => {
   const category = document.getElementById('category').value;
 
   try {
-    const res = await fetch('http://localhost:3000/api/notices', {
+    const res = await fetch(API_BASE+'/api/notices', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

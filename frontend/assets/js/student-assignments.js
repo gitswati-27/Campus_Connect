@@ -29,7 +29,7 @@ function showToast(message, color = "#333") {
 // Load assignments
 async function loadAssignments() {
   try {
-    const res = await fetch("http://localhost:3000/api/assignments/my", {
+    const res = await fetch(API_BASE+"/api/assignments/my", {
       headers: { "Authorization": `Bearer ${getToken()}` }
     });
     const { pending, finished } = await res.json();
@@ -59,7 +59,7 @@ async function loadAssignments() {
       div.innerHTML = `
         <h3>${s.assignment.title} (${s.assignment.subject})</h3>
         <p>Marks: ${s.marks !== null ? `${s.marks}/${s.assignment.maxMarks}` : "Not graded yet"}</p>
-        <a href="http://localhost:3000/${s.file}" target="_blank">📂 View Your Submission</a>
+        <a href="${API_BASE}/${s.file}" target="_blank">📂 View Your Submission</a>
       `;
       finishedDiv.appendChild(div);
     });
@@ -76,7 +76,7 @@ async function submitAssignment(e, assignmentId) {
   formData.append("file", fileInput.files[0]);
 
   try {
-    const res = await fetch(`http://localhost:3000/api/assignments/${assignmentId}/submit`, {
+    const res = await fetch(API_BASE+`/api/assignments/${assignmentId}/submit`, {
       method: "POST",
       headers: { "Authorization": `Bearer ${getToken()}` },
       body: formData

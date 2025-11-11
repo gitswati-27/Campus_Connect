@@ -5,7 +5,7 @@ function getToken() {
 // Load all groups
 async function loadAllGroups() {
   try {
-    const res = await fetch("http://localhost:3000/api/study-groups", {
+    const res = await fetch(API_BASE+"/api/study-groups", {
       headers: { Authorization: `Bearer ${getToken()}` }
     });
     const groups = await res.json();
@@ -42,7 +42,7 @@ function openGroup(id) {
 // Load my groups
 async function loadMyGroups() {
   try {
-    const res = await fetch("http://localhost:3000/api/study-groups/my", {
+    const res = await fetch(API_BASE+"/api/study-groups/my", {
       headers: { Authorization: `Bearer ${getToken()}` }
     });
     const groups = await res.json();
@@ -82,7 +82,7 @@ document.getElementById("createGroupForm").addEventListener("submit", async (e) 
   const subject = document.getElementById("subject").value;
 
   try {
-    const res = await fetch("http://localhost:3000/api/study-groups", {
+    const res = await fetch(API_BASE+"/api/study-groups", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -104,7 +104,7 @@ document.getElementById("createGroupForm").addEventListener("submit", async (e) 
 // Join group
 async function joinGroup(id) {
   try {
-    const res = await fetch(`http://localhost:3000/api/study-groups/${id}/join`, {
+    const res = await fetch(API_BASE+`/api/study-groups/${id}/join`, {
       method: "POST",
       headers: { Authorization: `Bearer ${getToken()}` }
     });

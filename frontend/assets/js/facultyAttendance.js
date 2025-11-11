@@ -32,7 +32,7 @@ document.getElementById('attendanceForm').addEventListener('submit', async (e) =
 
   try {
     // Fetch all students
-    const res = await fetch('http://localhost:3000/api/auth/students', {
+    const res = await fetch(API_BASE+'/api/auth/students', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
     studentsList = await res.json();
@@ -74,7 +74,7 @@ document.getElementById('markAttendanceForm').addEventListener('submit', async (
 
       // Send one record per period
       for (let i = 0; i < periods; i++) {
-        await fetch('http://localhost:3000/api/attendance', {
+        await fetch(API_BASE+'/api/attendance', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',

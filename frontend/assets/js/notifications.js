@@ -4,7 +4,7 @@ function getToken() {
 
 async function loadNotifications() {
   try {
-    const res = await fetch('http://localhost:3000/api/notifications/my', {
+    const res = await fetch(API_BASE+'/api/notifications/my', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 

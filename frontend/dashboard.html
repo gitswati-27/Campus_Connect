@@ -514,6 +514,7 @@
     
     
   </div>
+  <script src="assets/js/config.js"></script>
   <script>
   // Helper to get token
   function getToken() {
@@ -610,7 +611,7 @@
   // Load notifications
   async function loadNotifications() {
   try {
-    const res = await fetch('http://localhost:3000/api/notifications/my', {
+    const res = await fetch(API_BASE+'/api/notifications/my', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 
@@ -678,7 +679,7 @@ document.getElementById('notifBtn').addEventListener('click', async () => {
     
     // Mark all as read
     try {
-      await fetch('http://localhost:3000/api/notifications/mark-read', {
+      await fetch(API_BASE+'/api/notifications/mark-read', {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${getToken()}` }
       });

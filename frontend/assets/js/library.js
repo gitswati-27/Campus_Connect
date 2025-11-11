@@ -5,7 +5,7 @@ function getToken() {
 async function searchBooks() {
   const query = document.getElementById("searchBar").value;
   try {
-    const res = await fetch(`http://localhost:3000/api/library/books?search=${query}`, {
+    const res = await fetch(API_BASE+`/api/library/books?search=${query}`, {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 
@@ -49,7 +49,7 @@ async function searchBooks() {
 
 async function borrowBook(id) {
   try {
-    const res = await fetch(`http://localhost:3000/api/library/book/${id}/borrow`, {
+    const res = await fetch(API_BASE+`/api/library/book/${id}/borrow`, {
       method: "POST",
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
@@ -65,7 +65,7 @@ async function borrowBook(id) {
 
 async function reserveBook(id) {
   try {
-    const res = await fetch(`http://localhost:3000/api/library/book/${id}/reserve`, {
+    const res = await fetch(API_BASE+`/api/library/book/${id}/reserve`, {
       method: "POST",
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
@@ -80,7 +80,7 @@ async function reserveBook(id) {
 
 async function loadMyBooks() {
   try {
-    const res = await fetch("http://localhost:3000/api/library/my", {
+    const res = await fetch(API_BASE+"/api/library/my", {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 

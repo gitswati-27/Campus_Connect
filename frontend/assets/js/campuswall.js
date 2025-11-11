@@ -9,7 +9,7 @@ if (!token) {
 // Fetch posts
 async function getPosts() {
   try {
-    const res = await fetch('http://localhost:3000/api/posts', {
+    const res = await fetch(API_BASE+'/api/posts', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
 
@@ -80,7 +80,7 @@ function renderReplies(post) {
 // Upvote a post
 async function upvotePost(id) {
   try {
-    const res = await fetch(`http://localhost:3000/api/posts/${id}/upvote`, {
+    const res = await fetch(API_BASE+`/api/posts/${id}/upvote`, {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${token}` }
     });
@@ -104,7 +104,7 @@ async function replyPost(e, id) {
   const content = input.value;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/posts/${id}/reply`, {
+    const res = await fetch(API_BASE+`/api/posts/${id}/reply`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -135,7 +135,7 @@ document.getElementById('postForm').addEventListener('submit', async (e) => {
   const type = document.getElementById('type').value;
 
   try {
-    const res = await fetch('http://localhost:3000/api/posts', {
+    const res = await fetch(API_BASE+'/api/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

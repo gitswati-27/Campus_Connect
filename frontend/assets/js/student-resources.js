@@ -15,7 +15,7 @@ if (!user || user.role !== 'student') {
 
 async function loadResources() {
   try {
-    const res = await fetch('http://localhost:3000/api/resources/my', {
+    const res = await fetch(API_BASE+'/api/resources/my', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 
@@ -38,7 +38,7 @@ async function loadResources() {
         <small>${r.year} Year - ${r.branch} - ${r.section}</small>
         <small>Uploaded on: ${new Date(r.date).toLocaleString()}</small>
         <p>${r.description || ''}</p>
-        <a class="download" href="http://localhost:3000${r.filePath}" target="_blank">📥 Download</a>
+        <a class="download" href="${API_BASE}${r.filePath}" target="_blank">📥 Download</a>
       `;
       div.appendChild(el);
     });

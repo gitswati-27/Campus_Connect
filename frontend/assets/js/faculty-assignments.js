@@ -27,7 +27,7 @@ document.getElementById("createAssignmentForm").addEventListener("submit", async
   };
 
   try {
-    const res = await fetch("http://localhost:3000/api/assignments", {
+    const res = await fetch(API_BASE+"/api/assignments", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": `Bearer ${getToken()}` },
       body: JSON.stringify(data)
@@ -48,7 +48,7 @@ document.getElementById("createAssignmentForm").addEventListener("submit", async
 // Load faculty assignments
 async function loadAssignments() {
   try {
-    const res = await fetch("http://localhost:3000/api/assignments/faculty", {
+    const res = await fetch(API_BASE+"/api/assignments/faculty", {
       headers: { "Authorization": `Bearer ${getToken()}` }
     });
     const assignments = await res.json();
@@ -76,7 +76,7 @@ async function loadAssignments() {
 // View submissions
 async function viewSubmissions(assignmentId) {
   try {
-    const res = await fetch(`http://localhost:3000/api/assignments/${assignmentId}/submissions`, {
+    const res = await fetch(API_BASE+`/api/assignments/${assignmentId}/submissions`, {
       headers: { "Authorization": `Bearer ${getToken()}` }
     });
     const subs = await res.json();
@@ -89,7 +89,7 @@ async function viewSubmissions(assignmentId) {
       el.classList.add("submissions");
       el.innerHTML = `
         <p><b>${s.student.name}</b> (${s.student.regNo})</p>
-        <a href="http://localhost:3000/${s.file}" target="_blank">📂 View Submission</a>
+        <a href="${API_BASE}/${s.file}" target="_blank">📂 View Submission</a>
         <p>Status: ${s.marks !== null ? ` Graded <br> Marks obtained: ${s.marks}` : "Not graded"}</p>
         <input type="number" id="mark-${s._id}" placeholder="Marks">
         <button onclick="gradeSubmission('${s._id}', '${assignmentId}')">Grade</button>
@@ -105,7 +105,7 @@ async function viewSubmissions(assignmentId) {
 async function gradeSubmission(submissionId, assignmentId) {
   const marks = document.getElementById(`mark-${submissionId}`).value;
   try {
-    const res = await fetch(`http://localhost:3000/api/assignments/${submissionId}/grade`, {
+    const res = await fetch(API_BASE+`/api/assignments/${submissionId}/grade`, {
       method: "PUT",
       headers: { "Content-Type": "application/json", "Authorization": `Bearer ${getToken()}` },
       body: JSON.stringify({ marks })

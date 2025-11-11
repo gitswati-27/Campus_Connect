@@ -16,7 +16,7 @@ if (!user || user.role !== 'faculty') {
 // Load assigned doubts
 async function loadDoubts() {
   try {
-    const res = await fetch('http://localhost:3000/api/doubts/assigned', {
+    const res = await fetch(API_BASE+'/api/doubts/assigned', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
     const doubts = await res.json();
@@ -53,7 +53,7 @@ async function sendReply(doubtId) {
   }
 
   try {
-    const res = await fetch(`http://localhost:3000/api/doubts/${doubtId}/reply`, {
+    const res = await fetch(API_BASE+`/api/doubts/${doubtId}/reply`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

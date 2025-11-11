@@ -15,7 +15,7 @@ if (!user || user.role !== 'student') {
 
 async function loadAttendance() {
   try {
-    const res = await fetch('http://localhost:3000/api/attendance/my', {
+    const res = await fetch(API_BASE+'/api/attendance/my', {
       headers: { 'Authorization': `Bearer ${getToken()}` }
     });
 
